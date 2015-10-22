@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RPG</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/enemies.js"></script> 
+	<script type="text/javascript" src="../js/shopItems.js"></script> 
+	<script type="text/javascript" src="../js/app.js"></script> 
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+<div class="container">
+		<h1>RPG Incremental</h1>
+		<div>
+			<table class='table table-bordered table-stats'>
+				<tr>
+					<td class='info'>
+						Level: <span id='level'></span>
+					</td>
+					<td>
+						Gold:<span id='gold'></span>
+					</td>
+					<td>
+						Killed:<span id='enemiesKilled'></span>
+					</td>
+					<td class='danger'>
+						Strength:<span id='str'></span>
+						<span class='level-up btn btn-default btn-circle btn-sm glyphicon glyphicon-plus-sign pull-right hidden' onclick="levelUpStr()"></span>
+					</td>
+					<td class='success'>
+						Agility:<span id='agi'></span>
+						<span class='level-up btn btn-default btn-circle btn-sm glyphicon glyphicon-plus-sign pull-right hidden' onclick="levelUpAgi()"></span>
+					</td>
+					<td class='warning'>
+						Luck:<span id='luck'></span>
+						<span class='level-up btn btn-default btn-circle btn-sm glyphicon glyphicon-plus-sign pull-right hidden' onclick="levelUpLuck()"></span>
+					</td>
+				</tr>
+			</table>
+		<div class="progress xp-bar">
+		  <div class="progress-bar xp"  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
+		</div>
+		</div>
+		<div class="row">
+			<div class='col-sm-12 text-center'>
+				Enemy <span id='enemyName'></span>
+			</div>
+			<div class='col-sm-12 text-center'>
+				HP: <span id='enemyHP'></span>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-sm-12 text-center'>
+				<img src="" width="100px" height="100px">
+			</div>
+			<div class='col-sm-12 text-center attack'>
+				<button class='btn btn-primary' id='attack'>Attack!</button>
+			</div>
+		</div>
+	<div class='row'>
+		<div class='col-sm-12'>
+			<ul class="nav nav-tabs " id='tabs'>
+			  <li role="presentation" class="active"><a href="#shop">Shop</a></li>
+			  <li role="presentation"><a href="#hire">Hire</a></li>
+			  <li role="presentation"><a href="#magic">Magic</a></li>
+			  <li role="presentation"><a href="#stats">Stats</a></li>
+			</ul>
+
+			<div class='tab-content'>
+			<div role='tabpanel' class='tab-pane active' id='shop'>
+			<table id='shopData' class='table table-bordered'>
+			</table>
+				<div id='itemName' class='col-sm-4'></div>
+				<div id='itemStats' class='col-sm-4'></div>
+				<div id='buy' class='col-sm-4'>
+					<button class='btn'>Buy</button>
+				</div>
+			</div>
+			<div role='tabpanel' class='tab-pane' id='hire'>hire</div>
+			<div role='tabpanel' class='tab-pane' id='magic'>magic</div>
+			<div role='tabpanel' class='tab-pane' id='stats'>Stats</div>
+			</div>
+
+		</div>
+		
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.btn-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 4px 0;
+  font-size: 12px;
+  line-height: .946;
+  border-radius: 10px;
+}
+
+.attack {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.xp-bar {
+	height:0.9em;
+}
+
+.table-stats {
+	margin-bottom: 2px;
+}

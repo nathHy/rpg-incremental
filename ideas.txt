@@ -1,0 +1,18 @@
+Str 	- dmg per click
+Agi 	- crit chance
+Int		- magic dmg
+Luck 	- loot
+
+HP 		- max hp
+
+
+Loot drops from target
+move up the chain
+hire extras,mercs,armies
+advance to new age
+
+Fight wood till move to new area (prestige basically)
+then stone
+then animals
+then people
+then aliens?
