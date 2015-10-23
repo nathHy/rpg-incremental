@@ -13,7 +13,7 @@ var enemyOrder=[
 	animals,
 	people
 ]
-var currentEnemyIndex = 0;
+var currentEnemyType = 0;
 var enemyIndex = 0;
 var playerStats = {
 	str:1,
@@ -35,6 +35,7 @@ var playerInfo={
 }
 $(document).ready(function() {
 	updateEnemyHud()
+	var enemyTypes = enemyOrder[currentEnemyType]	
 	generateEnemy();
 	$("#attack").click(function(){
 		if (enemy.HP - playerInfo.damage <1) {
@@ -46,6 +47,11 @@ $(document).ready(function() {
 		} 
 		enemy.HP -= playerInfo.damage;
 
+	})
+
+	$("body").on('click','.buyItem',function (e) {
+		var cost = e.target.attributes.cost
+		console.log(cost);
 	})
 
 	$('#tabs a').click(function (e) {
@@ -75,28 +81,26 @@ function incrementGold() {
 
 function generateEnemy() {
 	console.log('Generating Enemy')
-	var enemyTypes
-	if (playerInfo.level <  5 )
-		enemyTypes=wood;
-	else if (playerInfo.level < 10 ) 
-		enemyTypes=stone;
-	else if (playerInfo.level < 15 )
-		enemyTypes=animals;
-	else if (playerInfo.level < 20 )
-		enemyTypes=people;
+	// var enemyTypes
+	// if (playerInfo.level <  5 )
+	// 	enemyTypes=wood;
+	// else if (playerInfo.level < 10 ) 
+	// 	enemyTypes=stone;
+	// else if (playerInfo.level < 15 )
+	// 	enemyTypes=animals;
+	// else if (playerInfo.level < 20 )
+	// 	enemyTypes=people;
 
-	if (playerInfo.totalEnemiesKilled % 10 == 0) {
+	if (playerInfo.totalEnemiesKilled % 10 == 0 && playerInfo.totalEnemiesKilled != 0) {
 		enemyIndex++;
 		if (enemyIndex > enemyTypes.names.length) {
-			currentEnemyIndex++;
+			currentEnemyType++;
 		}
 	}
 	// var index=getRandomIntInclusive(0,enemyTypes.names.length-1);
 	var index=enemyIndex;
 	// var currentEnemy=enemyTypes
-	var currentEnemy=enemyOrder[currentEnemyIndex]
-	console.log(enemyOrder)
-	console.log(currentEnemy)
+	var currentEnemy=enemyOrder[currentEnemyType]
 	// var hp = (enemy.maxHP + (currentEnemy.healthScale * index)) * Math.pow(playerInfo.level,ENEMY_HP_EXPONENT)
 	var hp = (10 + currentEnemy.healthScale * index) * Math.pow(playerInfo.level,ENEMY_HP_EXPONENT)
 	enemy.maxHP=hp;
@@ -142,11 +146,12 @@ function getRandomIntInclusive(min, max) {
 function generateShop() {
 	$("#shopData").html('')
 	for (var i = 0; i < items.length-1; i++) {
-		var str,agi,luck;
-		str=Math.round(10 * i * Math.pow(2,1.15)) +1
+		var damage,cost;
+		damage=Math.round(10 * i * Math.pow(2,1.15)) +1
+		cost=Math.round(10 * i * Math.pow(2,1.5)) + 1
 		var html = "<tr><td class='itemName'>" + items[i] + "</td>"
-		html    += "<td class='itemStats'>Strength:" + str + "</td>"
-		html    += "<td class='buyItem'><button class='btn' >Buy!</button></td></tr>"
+		html    += "<td class='itemStats'>Damage:" + damage + "</td>"
+		html    += "<td class='buyItem'>Cost:" + cost + "<button cost=" + cost + " class='btn pull-right buyItem'>Buy!</button></td></tr>"
 		$("#shopData").append(html)
 		
 	};
